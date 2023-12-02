@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { useCurrentUser } from '../contexts/CurrentUserContext';
 
 const NavBar = () => {
-  const currentUser = useCurrentUser
+  const currentUser = useCurrentUser();
   const loggedInIcons = <>{currentUser?.username}</>
   const loggedOutIcons = (
     <>
