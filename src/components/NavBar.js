@@ -108,7 +108,7 @@ const NavBar = () => {
               activeClassName={styles.Active}
               to="/"
             >
-              <i className="fas fa-home"></i>Home
+              <i className="fas fa-home"></i>
             </NavLink>
             {currentUser ? loggedInIcons : loggedOutIcons}
           </Nav>
