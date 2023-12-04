@@ -9,11 +9,13 @@ import Container from "react-bootstrap/Container";
 import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import { Image } from "react-bootstrap";
+import { Alert, Image } from "react-bootstrap";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory, useParams } from "react-router-dom";
 
 function PostEditForm() {
+  const [errors, setErrors] = useState({});
+
   const [postData, setPostData] = useState({
     title: "",
     content: "",
@@ -79,8 +81,6 @@ function PostEditForm() {
     }
   };
 
-  const [errors, setErrors] = useState({});
-
   const textFields = (
     <div className="text-center">
       <Form.Group>
@@ -92,6 +92,11 @@ function PostEditForm() {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors?.title?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
       <Form.Group>
         <Form.Label>Content</Form.Label>
         <Form.Control
@@ -102,6 +107,11 @@ function PostEditForm() {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors?.title?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
@@ -142,6 +152,11 @@ function PostEditForm() {
                 ref={imageInput}
               />
             </Form.Group>
+            {errors?.title?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
 
             <div className="d-md-none">{textFields}</div>
           </Container>
